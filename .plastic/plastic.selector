@@ -1,0 +1,3 @@
+repository "GameJam-Feb25@Platylaza@cloud"
+  path "/"
+    smartbranch "/main"
