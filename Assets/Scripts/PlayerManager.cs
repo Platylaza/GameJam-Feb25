@@ -6,10 +6,14 @@ using static BeltItem;
 public class PlayerManager : MonoBehaviour
 {
     [Header("Main:")]
-    public List<BeltItem> itemsInRange = new();
+    public BeltItem[] items;
 
     [Header("Config:")]
     public KeyCode interactKey = KeyCode.Space;
+    public float interactionDistance;
+
+    [Header("Testing:")]
+    public Transform interactionZone;
 
     [Header("Referenced Scripts:")]
     public PlayerMovement playerMovement;
@@ -18,28 +22,40 @@ public class PlayerManager : MonoBehaviour
     {
         if (playerMovement == null)
             playerMovement = GetComponent<PlayerMovement>();
+
+        items = FindObjectsByType<BeltItem>(FindObjectsSortMode.InstanceID);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(interactKey))
         {
-            // If there is an item in range
-            if (itemsInRange.Count > 0)
+            // If there are items
+            if (items.Length > 0)
             {
-                BeltItem closestItem = itemsInRange[0];
-                float closestDistance = Vector2.Distance(itemsInRange[0].transform.position, transform.position);
+                BeltItem closestItem = null;
+                float closestDistance = 1000;
 
-                foreach (BeltItem item in itemsInRange)
+                // Get closest item
+                foreach (BeltItem item in items)
                 {
                     float itemDistance = Vector2.Distance(item.transform.position, transform.position);
-                    if (itemDistance < closestDistance)
+                    if ( itemDistance < closestDistance)
                     {
                         closestItem = item;
                         closestDistance = itemDistance;
                     }
                 }
+
+                // If the closest item is within interaction range
+                if (closestItem != null && closestDistance <= interactionDistance)
+                {
+                    Debug.Log($"Interacted with {closestItem.gameObject.name}!");
+                }
             }
         }
+
+        if (interactionZone.gameObject.activeInHierarchy)
+            interactionZone.localScale = new Vector3(interactionDistance / transform.localScale.x, interactionDistance / transform.localScale.y, 1) * 1.75f;
     }
 }
