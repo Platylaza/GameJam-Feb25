@@ -895,11 +895,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 58cc9b7c-12d0-4408-942f-73e09b139956
+  cloudProjectId: a8d332f9-88a8-4cdf-aea2-43fefa1ede44
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: GameJam-Feb25
-  organizationId: platylaza
+  projectName: GameJam-Feb25 2025-02-22_17-32-36
+  organizationId: platylaza-2bb29fed-5f4b-4ebb-b14f-11ff68a2946e
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

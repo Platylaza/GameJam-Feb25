@@ -1,3 +1,4 @@
-repository "GameJam-Feb25@Platylaza@cloud"
+repository "GameJam-Feb25/GameJam-Feb25@20067451042093@cloud"
   path "/"
-    smartbranch "/main"
+    br "/main"
+    co "/main"
